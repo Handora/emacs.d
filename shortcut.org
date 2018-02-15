@@ -1,0 +1,19 @@
+* Shortcuts for remembering
+
+** org-mode
+   - timer
+     1. Starts a timer: C-c C-x 0
+     2. Record the time since timer: C-c C-x .
+     3. Pause and restart a timer: C-c C-x ,
+     4. Stop a timer: C-u C-c C-x ,
+
+** macros
+   - start a macros: f3
+   - finish a macros: f4
+
+** undo-tree
+   - undo tree: C-x u
+   - show diff: d
+
+** expand-regoin
+   - expand choosen or chooseregoin: C-=
