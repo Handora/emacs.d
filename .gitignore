@@ -2,3 +2,7 @@ elpa
 auto-save-list
 *~
 \#*
+ac-comphist.dat
+eshell
+myinit.el
+recentf
