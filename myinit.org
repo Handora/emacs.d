@@ -1,18 +1,15 @@
 #+STARTUP: overview
 
-* repos
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-#+END_SRC
-
+  
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<f5>") 'revert-buffer)
+(setq org-src-fontify-natively t)
 #+END_SRC
-
+  
 * ido
 #+BEGIN_SRC emacs-lisp
 (setq ido-enable-flex-matching t)
@@ -124,4 +121,52 @@
   (use-package zenburn-theme
     :ensure t
     :config (load-theme 'zenburn t))
+  #+END_SRC 
+
+* Reveal.js
+  #+BEGIN_SRC emacs-lisp :tangle no
+    (use-package ox-reveal
+    :ensure ox-reveal)
+
+    (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+    (setq org-reveal-mathjax t)
+
+    (use-package htmlize
+    :ensure t)
+  #+END_SRC
+
+* Flycheck
+  #+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init
+      (global-flycheck-mode t))
+
+  #+END_SRC
+  
+* Python
+  #+BEGIN_SRC emacs-lisp
+
+    (setq py-python-command "python3")
+    (setq python-shell-interpreter "python3")
+    (setq python-indent-offset 4)
+
+      (use-package jedi
+        :ensure t
+        :init
+        (add-hook 'python-mode-hook 'jedi:setup)
+        (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+
+        (use-package elpy
+        :ensure t
+        :config 
+        (elpy-enable))
+
+    (use-package virtualenvwrapper
+      :ensure t
+      :config
+      (venv-initialize-interactive-shells)
+      (venv-initialize-eshell))
+
   #+END_SRC
