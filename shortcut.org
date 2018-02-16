@@ -17,3 +17,26 @@
 
 ** expand-regoin
    - expand choosen or chooseregoin: C-=
+
+** iedit
+   - mark all selected: Ctrl+;
+
+** narrow and widen
+   - narrow to a region: C-x n
+   - wdien to region:    C-x n
+
+** web mode
+   - jumping between opening/closing HTML tags:  C-c C-n
+   - so on
+
+** Tramp
+   - Find file with ssh: C-x C-f RET ssh:user@host:file
+   - Find file with sudo: C-x C-f RET sudo::file
+   - Find file with ssh with sudo: C-x C-f RET ssh:user@host|sudo:user@host:file
+
+** Rectangle
+   - create a rectangle: C-x r c
+   - kill a rectangle:   C-x r k
+   - yank a rectangle:   C-x r y
+   - open a rectangle:   C-x r o
+   - visual rectangle:   C-x SPC
