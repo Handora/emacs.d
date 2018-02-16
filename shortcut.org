@@ -40,3 +40,12 @@
    - yank a rectangle:   C-x r y
    - open a rectangle:   C-x r o
    - visual rectangle:   C-x SPC
+     
+** Silver-searcher
+   - powerful search in emacs: M-x counsel-ag(May be we need add a shortcuts)
+
+** Ggtags
+   - find source code: M-.
+
+** Speedbar
+   - start a speedbar: M-x speedbar
