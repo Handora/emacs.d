@@ -1,27 +1,27 @@
 * Shortcuts for remembering
 
-** org-mode
+** Org-mode
    - timer
      1. Starts a timer: C-c C-x 0
      2. Record the time since timer: C-c C-x .
      3. Pause and restart a timer: C-c C-x ,
      4. Stop a timer: C-u C-c C-x ,
 
-** macros
+** Macros
    - start a macros: f3
    - finish a macros: f4
 
-** undo-tree
+** Undo-tree
    - undo tree: C-x u
    - show diff: d
 
-** expand-regoin
+** Expand-regoin
    - expand choosen or chooseregoin: C-=
 
-** iedit
+** Iedit
    - mark all selected: Ctrl+;
 
-** narrow and widen
+** Narrow and widen
    - narrow to a region: C-x n
    - wdien to region:    C-x n
 
@@ -49,3 +49,23 @@
 
 ** Speedbar
    - start a speedbar: M-x speedbar
+
+** Projectile
+   - switch between projects: C-c p p
+   - find in projects: C-c p s
+
+** Dumb-jump
+   - look for defination: M-g j
+   - back to origin: C-M-p
+   - look for defination with other window: M-g o
+** Ibuffer
+   - mark: m
+   - delete: d
+   - new frame: H
+   - execute: x
+
+** Emmet mode
+   - auto complete html: C-RET(C-j)
+** Smartparens
+   - move to function head: C-M-a
+   - move to function end: C-M-e

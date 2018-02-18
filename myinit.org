@@ -1,5 +1,17 @@
+#+TITLE: My Emacs configuration
 #+STARTUP: overview
+#+DESCRIPTION: Loading emacs configuration using org-babel
 
+* Introduction
+
+This is my version of an configuration file for GNU Emacs.
+You can find the latest version of this configuration at
+https://github.com/handora/emacs.d
+
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Handora")
+  (setq user-mail-address "qcdsr970209@gmail.com")
+#+END_SRC
 
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
@@ -18,7 +30,7 @@
 
 (defalias 'list-buffers 'ibuffer-other-window)
 #+END_SRC
-
+  
 * try
 #+BEGIN_SRC emacs-lisp
 (use-package try
@@ -49,10 +61,11 @@
   Swiper gives us a really efficient incremental search with regular expressions
   and Ivy / Counsel replace a lot of ido or helms completion functionality
   #+BEGIN_SRC emacs-lisp
-   (use-package counsel
-     :ensure t
-     :bind
-     (("M-y" . counsel-yank-pop)
+  (use-package counsel
+    :ensure t
+    :bind
+    (("M-x" . counsel-M-x)
+     ("M-y" . counsel-yank-pop)
      :map ivy-minibuffer-map
      ("M-y" . ivy-next-line)))
    
@@ -329,7 +342,7 @@
   c-basic-offset 2)
 #+END_SRC
 * smartparens
-#+BEGIN_SRC 
+#+BEGIN_SRC emacs-lisp 
 (use-package smartparens
   :ensure t
   :config
@@ -388,4 +401,79 @@
    ("C-c _"  . wrap-with-underscores)
   ("C-c `"  . wrap-with-back-quotes)
   ))
+#+END_SRC
+
+* Projectile
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+    :ensure t
+    :config
+    (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
+
+(use-package counsel-projectile
+    :ensure t
+    :config
+    (counsel-projectile-mode))
+#+END_SRC
+
+* Dumb jump
+#+BEGIN_SRC emacs-lisp
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config 
+  ;; (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+:init
+(dumb-jump-mode)
+  :ensure
+)
+#+END_SRC
+* IBUFFER
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+  (setq ibuffer-saved-filter-groups
+	(quote (("default"
+		 ("dired" (mode . dired-mode))
+		 ("org" (name . "^.*org$"))
+	       
+		 ("web" (or (mode . web-mode) (mode . js2-mode)))
+		 ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
+		 ("mu4e" (or
+
+                 (mode . mu4e-compose-mode)
+                 (name . "\*mu4e\*")
+                 ))
+		 ("programming" (or
+				 (mode . python-mode)
+				 (mode . c++-mode)))
+		 ("emacs" (or
+			   (name . "^\\*scratch\\*$")
+			   (name . "^\\*Messages\\*$")))
+		 ))))
+  (add-hook 'ibuffer-mode-hook
+	    (lambda ()
+	      (ibuffer-auto-mode 1)
+	      (ibuffer-switch-to-saved-filter-groups "default")))
+
+  ;; don't show these
+  ;; (add-to-list 'ibuffer-never-show-predicates "zowie")
+  ;; Don't show filter groups if there are no buffers in that group
+  (setq ibuffer-show-empty-filter-groups nil)
+
+  ;; Don't ask for confirmation to delete marked buffers
+  (setq ibuffer-expert t)
+
+#+END_SRC
+* Emmet mode
+#+BEGIN_SRC emacs-lisp
+(use-package emmet-mode
+:ensure t
+:config
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+)
 #+END_SRC
