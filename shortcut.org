@@ -69,3 +69,12 @@
 ** Smartparens
    - move to function head: C-M-a
    - move to function end: C-M-e
+** Treemacs
+   - open: F8
+   - help: ?
+   - open with projectile: F9
+
+
+
+** TODO
+   - hangle newline with braces
