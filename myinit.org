@@ -66,56 +66,63 @@ https://github.com/handora/emacs.d
   Swiper gives us a really efficient incremental search with regular expressions
   and Ivy / Counsel replace a lot of ido or helms completion functionality
   #+BEGIN_SRC emacs-lisp
-  (use-package counsel
-    :ensure t
-    :bind
-    (("M-x" . counsel-M-x)
-     ("M-y" . counsel-yank-pop)
-     :map ivy-minibuffer-map
-     ("M-y" . ivy-next-line)))
-   
-  (use-package ivy
-    :ensure t
-    :diminish (ivy-mode)
-    :bind (("C-x b" . ivy-switch-buffer))
-    :config
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-count-format "%d/%d ")
-    (setq ivy-display-style 'fancy))
+    (use-package counsel
+      :ensure t
+      :bind
+      (("M-x" . counsel-M-x)
+       ("M-y" . counsel-yank-pop)
+       :map ivy-minibuffer-map
+       ("M-y" . ivy-next-line)))
+     
+    (use-package ivy
+      :ensure t
+      :diminish (ivy-mode)
+      :bind (("C-x b" . ivy-switch-buffer))
+      :config
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq ivy-count-format "%d/%d ")
+      (setq ivy-display-style 'fancy))
 
-  (use-package swiper
-  :ensure t
-  :bind (("C-s" . swiper)
-	 ("C-r" . swiper)
-	 ("C-c C-r" . ivy-resume)
-	 ("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file))
-  :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    ;(global-set-key "\C-s" 'swiper)
-    ;(global-set-key (kbd "C-c C-r") 'ivy-resume)
-    ;(global-set-key (kbd "<f6>") 'ivy-resume)
-    ;(global-set-key (kbd "M-x") 'counsel-M-x)
-    ;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    ;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-    ;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-    ;(global-set-key (kbd "<f1> l") 'counsel-load-library)
-    ;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-    ;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-    ;(global-set-key (kbd "C-c g") 'counsel-git)
-    ;(global-set-key (kbd "C-c j") 'counsel-git-grep)
-    ;(global-set-key (kbd "C-c k") 'counsel-ag)
-    ;(global-set-key (kbd "C-x l") 'counsel-locate)
-    ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
+    (use-package swiper
+      :ensure t
+      :bind*
+      (("C-s" . swiper)
+       ("C-c C-r" . ivy-resume)
+       ("C-x C-f" . counsel-find-file)
+       ("C-c h f" . counsel-describe-function)
+       ("C-c h v" . counsel-describe-variable)
+       ("C-c i u" . counsel-unicode-char)
+       ("M-i" . counsel-imenu)
+       ("C-c g" . counsel-git)
+       ("C-c j" . counsel-git-grep)
+       ("C-c k" . counsel-ag)
+       ("C-c l" . scounsel-locate))
+      :config
+      (progn
+        (ivy-mode 1)
+        (setq ivy-use-virtual-buffers t)
+        (setq ivy-display-style 'fancy)
+                                            ;(global-set-key "\C-s" 'swiper)
+                                            ;(global-set-key (kbd "C-c C-r") 'ivy-resume)
+                                            ;(global-set-key (kbd "<f6>") 'ivy-resume)
+                                            ;(global-set-key (kbd "M-x") 'counsel-M-x)
+                                            ;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+                                            ;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+                                            ;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+                                            ;(global-set-key (kbd "<f1> l") 'counsel-load-library)
+                                            ;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+                                            ;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+                                            ;(global-set-key (kbd "C-c g") 'counsel-git)
+                                            ;(global-set-key (kbd "C-c j") 'counsel-git-grep)
+                                            ;(global-set-key (kbd "C-c k") 'counsel-ag)
+                                            ;(global-set-key (kbd "C-x l") 'counsel-locate)
+                                            ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+        (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+        ))
 
-  (use-package ivy-hydra
-    :ensure t)
+    (use-package ivy-hydra
+      :ensure t)
   #+END_SRC
 
 * Avy - navigate by searching for a letter on the screen and jumping to it
@@ -128,13 +135,20 @@ https://github.com/handora/emacs.d
 
 * Autocomplete
   #+BEGIN_SRC emacs-lisp
-  (use-package auto-complete
-  :ensure t
-  :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)
-    ))
+        ; (use-package auto-complete
+        ; :ensure t
+        ; :init
+        ; (progn
+        ;   (ac-config-default)
+        ;   (global-auto-complete-mode t)
+        ;   ))
+
+        (use-package company
+          :ensure t
+          :init
+            (global-company-mode))
+
+        (setq company-idle-delay t)
   #+END_SRC
 
 * Themes and modeline
@@ -169,15 +183,17 @@ https://github.com/handora/emacs.d
   
 * Python
   #+BEGIN_SRC emacs-lisp
-  (setq py-python-command "python")
-  (setq python-shell-interpreter "python")
-  (setq python-indent-offset 4)
+    (setq py-python-command "python")
+    (setq python-shell-interpreter "python")
+    (setq python-indent-offset 4)
 
-  (use-package jedi
-    :ensure t
-    :init
-    (add-hook 'python-mode-hook 'jedi:setup)
-    (add-hook 'python-mode-hook 'jedi:ac-setup))
+    (defun my/python-mode-hook ()
+      (add-to-list 'company-backends 'company-jedi))
+
+    (use-package company-jedi
+      :ensure t
+      :init
+      (add-hook 'python-mode-hook 'my/python-mode-hook))
     (use-package elpy
       :ensure t
       :config 
@@ -335,18 +351,18 @@ https://github.com/handora/emacs.d
 		  
 * c++
 #+BEGIN_SRC emacs-lisp
-(use-package ggtags
-:ensure t
-:config 
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
-)
+  (use-package ggtags
+    :ensure t
+    :config 
+    (add-hook 'c-mode-common-hook
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                  (ggtags-mode 1))))
+    )
 
-(setq
-  c-default-style "linux" 
-  c-basic-offset 2)
+  (setq
+   c-default-style "linux" 
+   c-basic-offset 2)
 #+END_SRC
 * smartparens
 #+BEGIN_SRC emacs-lisp 
@@ -553,7 +569,89 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 (use-package magit-gitflow
   :ensure t
   :config
-  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))  (use-package magit
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)) 
+#+END_SRC
+* Code Folding
+#+BEGIN_SRC emacs-lisp
+  (use-package hideshow
+    :ensure t
+    :bind (("C->" . my-toggle-hideshow-all)
+           ("C-<" . hs-hide-level)
+           ("C-;" . hs-toggle-hiding))
     :config
-    (global-set-key (kbd "C-c m") 'magit-status))
+    ;; Hide the comments too when you do a 'hs-hide-all'
+    (setq hs-hide-comments nil)
+    ;; Set whether isearch opens folded comments, code, or both
+    ;; where x is code, comments, t (both), or nil (neither)
+    (setq hs-isearch-open 'x)
+    ;; Add more here
+
+
+    (setq hs-set-up-overlay
+          (defun my-display-code-line-counts (ov)
+            (when (eq 'code (overlay-get ov 'hs))
+              (overlay-put ov 'display
+                           (propertize
+                            (format " ... <%d>"
+                                    (count-lines (overlay-start ov)
+                                                 (overlay-end ov)))
+                            'face 'font-lock-type-face)))))
+
+    (defvar my-hs-hide nil "Current state of hideshow for toggling all.")
+         ;;;###autoload
+    (defun my-toggle-hideshow-all () "Toggle hideshow all."
+           (interactive)
+           (setq my-hs-hide (not my-hs-hide))
+           (if my-hs-hide
+               (hs-hide-all)
+             (hs-show-all)))
+;    (add-hook 'prog-mode-hook (lambda ()
+;                                (hs-minor-mode 1)
+;                                ))
+    )
+#+END_SRC
+
+* Bookmarks
+  Bookmarks are very useful for quickly jumping around files.
+#+BEGIN_SRC emacs-lisp
+  (use-package bm
+    :ensure t
+    :bind (("C-c =" . bm-toggle)
+           ("C-c [" . bm-previous)
+           ("C-c ]" . bm-next)))
+#+END_SRC
+* Rainbow delimiters
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook
+              (lambda()
+                (rainbow-delimiters-mode)
+                ))) 
+#+END_SRC
+* Go
+#+BEGIN_SRC emacs-lisp
+  (defun my/go-company-mode-hook ()
+    (set (make-local-variable 'company-backends) '(company-go)))
+
+
+  (use-package go-mode
+    :ensure t
+    :config
+    (setq gofmt-command "goimports")
+    (add-hook 'before-save-hook 'gofmt-before-save))
+
+  (use-package company-go
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook 'my/go-company-mode-hook))
+
+  (use-package go-eldoc
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook 'go-eldoc-setup)
+    (local-set-key (kbd "M-.") 'godef-jump))
+
+  (add-to-list 'yas-snippet-dirs "/home/handora/.emacs.d/yasnippet-go")
 #+END_SRC

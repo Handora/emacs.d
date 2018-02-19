@@ -76,6 +76,12 @@
    - open with projectile: F9
 
 
+** Magit
+   - status: C-c m
+   - commiting: c
+     1. finish: C-c C-c
+     2. cancel: C-c C-k
+   - pushing: P
 
 ** TODO
    - hangle newline with braces
