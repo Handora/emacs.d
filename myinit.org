@@ -15,14 +15,18 @@ https://github.com/handora/emacs.d
 
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
-(setq inhibit-startup-message t)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(fset 'yes-or-no-p 'y-or-n-p)
-(global-set-key (kbd "<f5>") 'revert-buffer)
-(setq org-src-fontify-natively t)
+  (setq inhibit-startup-message t)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (menu-bar-mode -1)
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (global-set-key (kbd "<f5>") 'revert-buffer)
+  (setq org-src-fontify-natively t)
+
+  (use-package nyan-mode
+    :ensure t
+    :init (nyan-mode))
 #+END_SRC
-  
 * ido
 #+BEGIN_SRC emacs-lisp
 (setq ido-enable-flex-matching t)
@@ -47,7 +51,7 @@ https://github.com/handora/emacs.d
 	(which-key-mode))
   #+END_SRC
 
-* Ace windows 
+* Ace windows
   For easy window switching
   #+BEGIN_SRC emacs-lisp
   (use-package ace-window
@@ -109,6 +113,9 @@ https://github.com/handora/emacs.d
     ;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
+
+  (use-package ivy-hydra
+    :ensure t)
   #+END_SRC
 
 * Avy - navigate by searching for a letter on the screen and jumping to it
@@ -132,7 +139,6 @@ https://github.com/handora/emacs.d
 
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp
-
   (use-package color-theme
     :ensure t)
   (use-package zenburn-theme
@@ -479,6 +485,11 @@ https://github.com/handora/emacs.d
 )
 #+END_SRC
 * Personal configureation
+Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
+#+BEGIN_SRC emacs-lisp
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+#+END_SRC
 * Treemacs
 #+BEGIN_SRC emacs-lisp
   (use-package treemacs
@@ -527,4 +538,22 @@ https://github.com/handora/emacs.d
 ;  )
 
 
+#+END_SRC
+* Markdown mode
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode
+  :ensure t)
+#+END_SRC
+* Magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t
+  :bind (("C-c m" . magit-status)))
+
+(use-package magit-gitflow
+  :ensure t
+  :config
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))  (use-package magit
+    :config
+    (global-set-key (kbd "C-c m") 'magit-status))
 #+END_SRC

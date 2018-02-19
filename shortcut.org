@@ -6,6 +6,7 @@
      2. Record the time since timer: C-c C-x .
      3. Pause and restart a timer: C-c C-x ,
      4. Stop a timer: C-u C-c C-x ,
+     5. edit src: C-c '
 
 ** Macros
    - start a macros: f3
