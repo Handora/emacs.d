@@ -1,12 +1,18 @@
 * Shortcuts for remembering
-
 ** Org-mode
-   - timer
+   - Timer
      1. Starts a timer: C-c C-x 0
      2. Record the time since timer: C-c C-x .
      3. Pause and restart a timer: C-c C-x ,
      4. Stop a timer: C-u C-c C-x ,
      5. edit src: C-c '
+   - Agenda
+     1. agenda: C-c a
+   - capture mode
+     1. capture: C-c c
+     2. capture with frame: M-x RET make-capture-frame
+   - links org mode
+     1. export: C-c C-e
 
 ** Macros
    - start a macros: f3
@@ -74,8 +80,6 @@
    - open: F8
    - help: ?
    - open with projectile: F9
-
-
 ** Magit
    - status: C-c m
    - commiting: c
