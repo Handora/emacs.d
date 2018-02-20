@@ -635,7 +635,6 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
   (defun my/go-company-mode-hook ()
     (set (make-local-variable 'company-backends) '(company-go)))
 
-
   (use-package go-mode
     :ensure t
     :config
@@ -654,4 +653,16 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
     (local-set-key (kbd "M-.") 'godef-jump))
 
   (add-to-list 'yas-snippet-dirs "/home/handora/.emacs.d/yasnippet-go")
+
+  (use-package go-errcheck
+    :ensure t)
+
+  (setq company-echo-delay 0)                          ; remove annoying blinking
+  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+  (add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
+  (require 'go-flymake)
+
+  (add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
+  (require 'go-flycheck)  
 #+END_SRC

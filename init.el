@@ -19,7 +19,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (go-eldoc company-go go-mode company-jedi rainbow-delimiters bm magit nyan-mode ivy-hydra markdown-mode treemacs-projectile treemacs emmet-mode dumb-jump counsel-projectile projectile smartparens ggtags better-shell web-mode iedit aggressive-indent expand-region hungry-delete beacon flycheck elfeed-org borg zenburn-theme which-key use-package try counsel color-theme auto-complete ace-window))))
+    (flycheck-gometalinter go-errcheck go-eldoc company-go go-mode company-jedi rainbow-delimiters bm magit nyan-mode ivy-hydra markdown-mode treemacs-projectile treemacs emmet-mode dumb-jump counsel-projectile projectile smartparens ggtags better-shell web-mode iedit aggressive-indent expand-region hungry-delete beacon flycheck elfeed-org borg zenburn-theme which-key use-package try counsel color-theme auto-complete ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
