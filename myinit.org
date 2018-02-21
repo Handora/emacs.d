@@ -690,14 +690,16 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 )
 
 #+END_SRC
-* DIRED
+* Dired
 #+BEGIN_SRC emacs-lisp
-; wiki melpa problem
-;(use-package dired+
-;  :ensure t
-;  :config (require 'dired+)
-;  )
+  ; wiki melpa problem
+  ;(use-package dired+
+  ;  :ensure t
+  ;  :config (require 'dired+))
+                                          ;  )
 
+  (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+  (require 'dired+)
 
 #+END_SRC
 * Markdown mode
@@ -1053,4 +1055,22 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 #+BEGIN_SRC emacs-lisp
   (use-package simple-mpc
     :ensure t)
+#+END_SRC
+* Regex
+#+BEGIN_SRC emacs-lisp
+  (use-package pcre2el
+    :ensure t
+    :config 
+    (pcre-mode)
+    )
+#+END_SRC
+
+* Wgrep
+
+#+BEGIN_SRC emacs-lisp
+  (use-package wgrep
+    :ensure t
+    )
+
+  (setq counsel-fzf-cmd "/home/handora/.fzf/bin/fzf -f %s")
 #+END_SRC

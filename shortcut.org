@@ -75,6 +75,7 @@
 
 ** Emmet mode
    - auto complete html: C-RET(C-j)
+
 ** Smartparens
    - move to function head: C-M-a
    - move to function end: C-M-e
@@ -89,5 +90,35 @@
      2. cancel: C-c C-k
    - pushing: P
    - git gutter: C-g C-g 
-** TODO
-   - hangle newline with braces
+** Ivy 
+- when completion, put candidates into new buffer: C-c C-o
+
+** Dired
+- mode: C-x d
+
+- Basic
+  1. replace: a
+  2. view: v
+  3. file: f 
+  4. new dir: +
+  5. open(even image): o
+  6. open with frame: C-o
+  7. mark: m
+  8. copy: C
+  9. rename, mv: R
+  10. delete: D
+
+- Regex
+  1. regex: %m 
+  2. toggle: t
+  3. hide: h
+
+- Renaming
+  1. rename: C-x C-q
+
+- fzf
+  1. fzf: M-x RET counsel-fzf-cmd
+
+* TODO
+   - hangle newline with brace
+   - colorful dired+
