@@ -13,6 +13,8 @@
      2. capture with frame: M-x RET make-capture-frame
    - links org mode
      1. export: C-c C-e
+   - google calendar
+     1. delete an appointment: M-x RET org-gcal-delete-at-point
 
 ** Macros
    - start a macros: f3
@@ -86,6 +88,5 @@
      1. finish: C-c C-c
      2. cancel: C-c C-k
    - pushing: P
-
 ** TODO
    - hangle newline with braces

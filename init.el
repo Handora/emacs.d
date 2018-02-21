@@ -17,7 +17,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil)
  '(org-default-notes-file (concat org-directory "/notes.org"))
  '(org-directory "~/Dropbox/orgfiles")
  '(org-export-html-postamble nil)
@@ -26,11 +25,10 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (calfw-ical calfw-org calfw-gcal calfw org-gcal org-bullets flycheck-gometalinter go-errcheck go-eldoc company-go go-mode company-jedi rainbow-delimiters bm magit nyan-mode ivy-hydra markdown-mode treemacs-projectile treemacs emmet-mode dumb-jump counsel-projectile projectile smartparens ggtags better-shell web-mode iedit aggressive-indent expand-region hungry-delete beacon flycheck elfeed-org borg zenburn-theme which-key use-package try counsel color-theme auto-complete ace-window))))
+    (go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(put 'narrow-to-region 'disabled nil)
