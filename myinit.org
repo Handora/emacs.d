@@ -814,3 +814,178 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
   (use-package go-playground
     :ensure t)
 #+END_SRC
+* Elfeed
+#+BEGIN_SRC emacs-lisp
+  (setq elfeed-db-directory "~/Dropbox/elfeed/elfeeddb")
+
+
+  (defun elfeed-mark-all-as-read ()
+    (interactive)
+    (mark-whole-buffer)
+    (elfeed-search-untag-all-unread))
+
+
+  ;;functions to support syncing .elfeed between machines
+  ;;makes sure elfeed reads index from disk before launching
+  (defun bjm/elfeed-load-db-and-open ()
+    "Wrapper to load the elfeed db from disk before opening"
+    (interactive)
+    (elfeed-db-load)
+    (elfeed)
+    (elfeed-search-update--force))
+
+  ;;write to disk when quiting
+  (defun bjm/elfeed-save-db-and-bury ()
+    "Wrapper to save the elfeed db to disk before burying buffer"
+    (interactive)
+    (elfeed-db-save)
+    (quit-window))
+
+  (use-package elfeed
+    :ensure t
+    :bind (:map elfeed-search-mode-map
+                ("q" . bjm/elfeed-save-db-and-bury)
+                ("Q" . bjm/elfeed-save-db-and-bury)
+                ("m" . elfeed-toggle-star)
+                ("M" . elfeed-toggle-star)
+                ("j" . mz/make-and-run-elfeed-hydra)
+                ("J" . mz/make-and-run-elfeed-hydra)
+                )
+    :config
+    (defalias 'elfeed-toggle-star
+      (elfeed-expose #'elfeed-search-toggle-all 'star))
+    )
+
+  (use-package elfeed-goodies
+    :ensure t
+    :config
+    (elfeed-goodies/setup))
+
+
+  (use-package elfeed-org
+    :ensure t
+    :config
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/Dropbox/elfeed/elfeed.org")))
+
+  (defun z/hasCap (s) ""
+         (let ((case-fold-search nil))
+           (string-match-p "[[:upper:]]" s)
+           ))
+
+  (defun z/get-hydra-option-key (s)
+    "returns single upper case letter (converted to lower) or first"
+    (interactive)
+    (let ( (loc (z/hasCap s)))
+      (if loc
+          (downcase (substring s loc (+ loc 1)))
+        (substring s 0 1)
+        )))
+
+  ;;  (active blogs cs eDucation emacs local misc sports star tech unread webcomics)
+  (defun mz/make-elfeed-cats (tags)
+    "Returns a list of lists. Each one is line for the hydra configuratio in the form
+         (c function hint)"
+    (interactive)
+    (mapcar (lambda (tag)
+              (let* (
+                     (tagstring (symbol-name tag))
+                     (c (z/get-hydra-option-key tagstring))
+                     )
+                (list c (append '(elfeed-search-set-filter) (list (format "@6-months-ago +%s" tagstring) ))tagstring  )))
+            tags))
+
+  (defmacro mz/make-elfeed-hydra ()
+    `(defhydra mz/hydra-elfeed ()
+       "filter"
+       ,@(mz/make-elfeed-cats (elfeed-db-get-all-tags))
+       ("*" (elfeed-search-set-filter "@6-months-ago +star") "Starred")
+       ("M" elfeed-toggle-star "Mark")
+       ("A" (elfeed-search-set-filter "@6-months-ago") "All")
+       ("T" (elfeed-search-set-filter "@1-day-ago") "Today")
+       ("Q" bjm/elfeed-save-db-and-bury "Quit Elfeed" :color blue)
+       ("q" nil "quit" :color blue)
+       ))
+
+  (defun mz/make-and-run-elfeed-hydra ()
+    ""
+    (interactive)
+    (mz/make-elfeed-hydra)
+    (mz/hydra-elfeed/body))
+#+END_SRC
+* Hydra
+#+BEGIN_SRC emacs-lisp
+  (use-package hydra 
+    :ensure hydra
+    :init 
+    (global-set-key
+    (kbd "C-x t")
+            (defhydra toggle (:color blue)
+              "toggle"
+              ("a" abbrev-mode "abbrev")
+              ("s" flyspell-mode "flyspell")
+              ("d" toggle-debug-on-error "debug")
+              ("c" fci-mode "fCi")
+              ("f" auto-fill-mode "fill")
+              ("t" toggle-truncate-lines "truncate")
+              ("w" whitespace-mode "whitespace")
+              ("q" nil "cancel")))
+    (global-set-key
+     (kbd "C-x j")
+     (defhydra gotoline 
+       ( :pre (linum-mode 1)
+              :post (linum-mode -1))
+       "goto"
+       ("t" (lambda () (interactive)(move-to-window-line-top-bottom 0)) "top")
+       ("b" (lambda () (interactive)(move-to-window-line-top-bottom -1)) "bottom")
+       ("m" (lambda () (interactive)(move-to-window-line-top-bottom)) "middle")
+       ("e" (lambda () (interactive)(end-of-buffer)) "end")
+       ("c" recenter-top-bottom "recenter")
+       ("n" next-line "down")
+       ("p" (lambda () (interactive) (forward-line -1))  "up")
+       ("g" goto-line "goto-line")
+       ))
+    (global-set-key
+     (kbd "C-c t")
+     (defhydra hydra-global-org (:color blue)
+       "Org"
+       ("t" org-timer-start "Start Timer")
+       ("s" org-timer-stop "Stop Timer")
+       ("r" org-timer-set-timer "Set Timer") ; This one requires you be in an orgmode doc, as it sets the timer for the header
+       ("p" org-timer "Print Timer") ; output timer value to buffer
+       ("w" (org-clock-in '(4)) "Clock-In") ; used with (org-clock-persistence-insinuate) (setq org-clock-persist t)
+       ("o" org-clock-out "Clock-Out") ; you might also want (setq org-log-note-clock-out t)
+       ("j" org-clock-goto "Clock Goto") ; global visit the clocked task
+       ("c" org-capture "Capture") ; Don't forget to define the captures you want http://orgmode.org/manual/Capture.html
+             ("l" (or )rg-capture-goto-last-stored "Last Capture"))
+
+     ))
+#+END_SRC
+* Misc
+#+BEGIN_SRC emacs-lisp
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome-stable")
+#+END_SRC
+* Personal key-binding
+#+BEGIN_SRC emacs-lisp
+  (defun org-agenda-show-agenda-and-todo (&optional arg)
+    (interactive "P")
+    (org-agenda arg "c")
+    (org-agenda-fortnight-view))
+
+  ;; set up my own map
+  (define-prefix-command 'z-map)
+  (global-set-key (kbd "C-c z") 'z-map)
+  (define-key z-map (kbd "c") 'multiple-cursors-hydra/body)
+  (define-key z-map (kbd "m") 'mu4e)
+  (define-key z-map (kbd "e") 'bjm/elfeed-load-db-and-open)
+  (define-key z-map (kbd "1") 'org-global-cycle)
+  (define-key z-map (kbd "a") 'org-agenda-show-agenda-and-todo)
+  (define-key z-map (kbd "g") 'counsel-ag)
+
+  (define-key z-map (kbd "s") 'flyspell-correct-word-before-point)
+  (define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+  (define-key z-map (kbd "f") 'origami-toggle-node)
+  (define-key z-map (kbd "w") 'z/swap-windows)
+
+#+END_SRC
