@@ -8,3 +8,6 @@ myinit.el
 recentf
 .python-environments
 projectile-bookmarks.eld
+bookmarks
+org-gcal
+url

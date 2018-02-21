@@ -22,7 +22,7 @@ https://github.com/handora/emacs.d
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-set-key (kbd "<f5>") 'revert-buffer)
   (setq org-src-fontify-natively t)
-  (set-face-attribute 'default nil :height 150)
+  (set-face-attribute 'default nil :height 170)
 
   (use-package nyan-mode
     :ensure t
