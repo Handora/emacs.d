@@ -88,5 +88,6 @@
      1. finish: C-c C-c
      2. cancel: C-c C-k
    - pushing: P
+   - git gutter: C-g C-g 
 ** TODO
    - hangle newline with braces

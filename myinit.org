@@ -705,16 +705,67 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 (use-package markdown-mode
   :ensure t)
 #+END_SRC
-* Magit
+* Git
 #+BEGIN_SRC emacs-lisp
-(use-package magit
-  :ensure t
-  :bind (("C-c m" . magit-status)))
+    (use-package magit
+      :ensure t
+      :bind (("C-c m" . magit-status)))
 
-(use-package magit-gitflow
-  :ensure t
-  :config
-  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)) 
+    (use-package magit-gitflow
+      :ensure t
+      :config
+      (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)) 
+
+    (use-package git-gutter
+      :ensure t
+      :init
+      (global-git-gutter-mode +1)
+      :config
+      (set-face-background 'git-gutter:modified "#b58900")
+      (set-face-background 'git-gutter:added "#859900")
+      (set-face-background 'git-gutter:deleted "#dc322f")
+
+      (set-face-foreground 'git-gutter:modified "none")
+      (set-face-foreground 'git-gutter:added "none")
+      (set-face-foreground 'git-gutter:deleted "none")
+      (setq git-gutter:modified-sign " ~")
+      (setq git-gutter:added-sign " +")
+      (setq git-gutter:deleted-sign " -")
+      (setq git-gutter:window-width 3))
+
+    (use-package git-timemachine
+      :ensure t
+      )
+
+    (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
+                                          :hint nil)
+      "
+    Git gutter:
+      _j_: next hunk        _s_tage hunk     _q_uit
+      _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
+      ^ ^                   _p_opup hunk
+      _h_: first hunk
+      _l_: last hunk        set start _R_evision
+    "
+      ("j" git-gutter:next-hunk)
+      ("k" git-gutter:previous-hunk)
+      ("h" (progn (goto-char (point-min))
+                  (git-gutter:next-hunk 1)))
+      ("l" (progn (goto-char (point-min))
+                  (git-gutter:previous-hunk 1)))
+      ("s" git-gutter:stage-hunk)
+      ("r" git-gutter:revert-hunk)
+      ("p" git-gutter:popup-hunk)
+      ("R" git-gutter:set-start-revision)
+      ("q" nil :color blue)
+      ("Q" (progn (git-gutter-mode -1)
+                  ;; git-gutter-fringe doesn't seem to
+                  ;; clear the markup right away
+                  (sit-for 0.1)
+                  (git-gutter:clear))
+       :color blue))
+
+  (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
 #+END_SRC
 * Code Folding
 #+BEGIN_SRC emacs-lisp
@@ -988,4 +1039,18 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
   (define-key z-map (kbd "f") 'origami-toggle-node)
   (define-key z-map (kbd "w") 'z/swap-windows)
 
+#+END_SRC
+* Atomic Chrome 
+#+BEGIN_SRC emacs-lisp
+  (use-package atomic-chrome
+    :ensure t
+    :config (atomic-chrome-start-server))
+
+  (setq atomic-chrome-buffer-open-style 'frame)
+#+END_SRC
+* Customize
+* Music
+#+BEGIN_SRC emacs-lisp
+  (use-package simple-mpc
+    :ensure t)
 #+END_SRC
