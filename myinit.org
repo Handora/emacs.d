@@ -22,11 +22,14 @@ https://github.com/handora/emacs.d
   (fset 'yes-or-no-p 'y-or-n-p)
   (global-set-key (kbd "<f5>") 'revert-buffer)
   (setq org-src-fontify-natively t)
+  (setq ring-bell-function 'ignore)
   (set-face-attribute 'default nil :height 170)
 
   (use-package nyan-mode
     :ensure t
     :init (nyan-mode))
+
+  (set-default-font "Consolas 17")
 #+END_SRC
 * ido
 #+BEGIN_SRC emacs-lisp
@@ -830,42 +833,22 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 #+END_SRC
 * Go
 #+BEGIN_SRC emacs-lisp
-  (defun my/go-company-mode-hook ()
-    (set (make-local-variable 'company-backends) '(company-go)))
+  (require 'th-golang)
 
-  (use-package go-mode
-    :ensure t
-    :config
-    (setq gofmt-command "goimports")
-    (add-hook 'before-save-hook 'gofmt-before-save))
+  (defun my-go-setup ()
+    (setq tab-width 2)
+    (go-guru-hl-identifier-mode))
 
-  (use-package company-go
-    :ensure t
-    :init
-    (add-hook 'go-mode-hook 'my/go-company-mode-hook))
-
-  (use-package go-eldoc
-    :ensure t
-    :config
-    (add-hook 'go-mode-hook 'go-eldoc-setup)
-    (local-set-key (kbd "M-.") 'godef-jump))
+  (add-hook 'go-mode-hook 'my-go-setup)
 
   (add-to-list 'yas-snippet-dirs "/home/handora/.emacs.d/yasnippet-go")
 
-  (use-package go-errcheck
-    :ensure t)
-
-  (setq company-echo-delay 0)                          ; remove annoying blinking
-  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-
-  (add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
-  (require 'go-flymake)
-
-  (add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
-  (require 'go-flycheck)  
-
   (use-package go-playground
     :ensure t)
+
+  (use-package go-guru
+    :ensure t)
+
 #+END_SRC
 * Elfeed
 #+BEGIN_SRC emacs-lisp
