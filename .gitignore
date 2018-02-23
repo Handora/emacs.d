@@ -11,3 +11,5 @@ projectile-bookmarks.eld
 bookmarks
 org-gcal
 url
+.mbsyncpass.gpg
+.mbsyncrc

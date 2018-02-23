@@ -13,7 +13,7 @@ https://github.com/handora/emacs.d
   (setq user-mail-address "qcdsr970209@gmail.com")
 #+END_SRC
 
-* interface tweaks
+* interface tweak
 #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t)
   (tool-bar-mode -1)
@@ -1056,4 +1056,25 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
     )
 
   (setq counsel-fzf-cmd "/home/handora/.fzf/bin/fzf -f %s")
+#+END_SRC
+* latex
+#+BEGIN_SRC emacs-lisp
+  (load "auctex.el" nil t t)
+  (load "preview-latex.el" nil t t)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq TeX-save-query nil)
+  (setq TeX-PDF-mode t)
+
+  (defun flymake-get-tex-args (file-name)
+    (list "pdflatex"
+          (list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
+
+  (add-hook 'LaTeX-mode-hook 'flymake-mode)
+
+  (setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
+  (setq ispell-dictionary "english") ; this can obviously be set to any language your spell-checking program supports
+
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-buffer)
 #+END_SRC
