@@ -121,4 +121,5 @@
 
 * TODO
    - hangle newline with brace
+   - prepare for doom theme
 

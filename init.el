@@ -34,8 +34,9 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (go-guru wgrep pcre2el dired+ simple-mpc git-timemachine git-gutter atomic-chrome elfeed-org elfeed-goodies elfeed go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent)))
+    (mode-icons smart-mode-line alect-themes moe-theme base16-theme zerodark-theme spaceline go-guru wgrep pcre2el dired+ simple-mpc git-timemachine git-gutter atomic-chrome elfeed-org elfeed-goodies elfeed go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+ '(spaceline-info-mode t)
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
    (quote
@@ -63,4 +64,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#3F3F3F" :foreground "#DCDCCC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "PfEd" :family "Consolas")))))
+ )
