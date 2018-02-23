@@ -30,6 +30,7 @@
  '(org-directory "~/Dropbox/orgfiles")
  '(org-export-html-postamble nil)
  '(org-hide-leading-stars t)
+ '(org-log-into-drawer t)
  '(org-startup-folded (quote overview))
  '(org-startup-indented t)
  '(package-selected-packages

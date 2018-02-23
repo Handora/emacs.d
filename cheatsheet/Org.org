@@ -1,0 +1,32 @@
+#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) | DONE(d) SUCCESS(s)
+
+* Org cheatsheet 
+** S01
+*** TODO/DONE: <SHIFT> + (<-|->)
+*** SEQ_TODO: #+SEQ_TODO a b c | d e
+*** commit a line: C-c C-c
+*** toggle menu of TODO: C-c C-t
+*** schedule an action: C-c C-s
+*** deadline an action: C-c C-d
+*** agenda view: C-c a a
+**** follow mode: <SHIFT> + fX
+**** forward: f
+**** backward: b
+*** Repeat
+**** Next occurence in one week(w=week, d, m, y): +1w
+**** ^, definitely future: ++1w
+**** Next occurence 1 week after task is masked done: .+1w
+*** Checklist
+**** starts with - [ ] 
+**** starts a new checlist line: <ALT> + <SHIFT> + <RET>
+**** done or undone a checklist line: C-c C-c
+**** completion: [/] or [%]
+** S02
+*** Tags: #+TAGS: PHONE(o)
+*** Assign a tag: C-c C-q(<Tab> for undefined one)
+*** DREWER: :DREWERNAME: --- :END:(:LOGBOOK: | :PROPERTIES: is reserved)
+*** take quick note: C-c C-z(in :LOGBOOK:)
+*** Archive file: #+ARCHIVE: --.org::
+*** archive an entry: C-c C-x C-a
+*** archive a subtree: C-c C-x C-s
+*** archive search subtree: C-u C-c C-x C-s

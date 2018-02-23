@@ -568,13 +568,15 @@ https://github.com/handora/emacs.d
 
 #+END_SRC
 * Org mode
-  Org bullets makes things look pretty
   #+BEGIN_SRC emacs-lisp
     (setenv "BROWSER" "google-chrome-stable")
-    (use-package org-bullets
-      :ensure t
-      :config
-      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+    ;; (use-package org-bullets
+    ;;   :ensure t
+    ;;   :config
+    ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    (setq org-startup-indented t
+          org-hide-leading-stars t)
 
     (custom-set-variables
      '(org-directory "~/Dropbox/orgfiles")
@@ -609,7 +611,8 @@ https://github.com/handora/emacs.d
 
     (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
                                  "~/Dropbox/orgfiles/i.org"
-                                 "~/Dropbox/orgfiles/schedule.org"))
+                                 "~/Dropbox/orgfiles/schedule.org"
+                                 "~/Dropbox/handora/life.org"))
 
     (setq org-capture-templates
           '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
@@ -680,7 +683,7 @@ https://github.com/handora/emacs.d
             org-gcal-client-secret "ep2blDEUvk4LQeS51F7uynmt"
             org-gcal-file-alist '(("qcdsr970209@gmail.com" .  "~/Dropbox/orgfiles/gcal.org"))))
 
-    (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+    (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-fetch) ))
     ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) )) 
 
     (use-package calfw-org
@@ -709,10 +712,11 @@ https://github.com/handora/emacs.d
       (setq cfw:org-overwrite-default-keybinding t))
 
     (use-package calfw-gcal
-            :ensure t
-            :config
-            (require 'calfw-gcal))
+      :ensure t
+      :config
+      (require 'calfw-gcal))
 
+    '(org-log-into-drawer t)
   #+END_SRC
 * Stuff to refile as I do more Screencasts
 #+BEGIN_SRC emacs-lisp
