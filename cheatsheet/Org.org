@@ -30,3 +30,10 @@
 *** archive an entry: C-c C-x C-a
 *** archive a subtree: C-c C-x C-s
 *** archive search subtree: C-u C-c C-x C-s
+** S03
+*** Auto log: #+SEQ_TODO A(a@/!): @(log when enter a) !(log when leave a)
+*** Auto log when done(CLOSED stamp): org-log-done
+*** Auto log when reschedule: org-log-reschedule
+*** refile configure: org-refile-targets, org-refile-use-outline-path, org-refile-allow-creating-parent-nodes
+*** move with refile: C-c C-w
+*** copy with refile: C-c M-w
