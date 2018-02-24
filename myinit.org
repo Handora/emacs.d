@@ -676,12 +676,11 @@ https://github.com/handora/emacs.d
                                             ; for inserting inactive dates
     (define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
 
+    ;; for personal secret
     (use-package org-gcal
       :ensure t
       :config
-      (setq org-gcal-client-id "177299916374-b587uaqt7p7g1t7cq1ttofbgprc4kkfi.apps.googleusercontent.com"
-            org-gcal-client-secret "ep2blDEUvk4LQeS51F7uynmt"
-            org-gcal-file-alist '(("qcdsr970209@gmail.com" .  "~/Dropbox/orgfiles/gcal.org"))))
+      (load-file "/home/handora/.emacs.secret"))
 
     (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-fetch) ))
     ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) )) 
