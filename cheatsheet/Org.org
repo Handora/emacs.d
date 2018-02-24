@@ -1,4 +1,4 @@
-#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) | DONE(d) SUCCESS(s)
+#+SEQ_TODO: NEXT(n@/!) TODO(t@/!) WAITING(w) | DONE(d) SUCCESS(s)
 
 * Org cheatsheet 
 ** S01
@@ -37,3 +37,9 @@
 *** refile configure: org-refile-targets, org-refile-use-outline-path, org-refile-allow-creating-parent-nodes
 *** move with refile: C-c C-w
 *** copy with refile: C-c M-w
+*** org capture
+*** :PROPERTIES: stores task specific settings and user defined attributes, MUST follow headline
+**** :LOGGING: with nil can avoid repeating task done
+**** PROPERTIES can be searched with m
+*** Archiving to different files
+**** :ARCHIVE:track.org::* TAGS
