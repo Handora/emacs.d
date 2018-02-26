@@ -736,19 +736,21 @@ https://github.com/handora/emacs.d
 #+END_SRC
 		  
 * c++
-#+BEGIN_SRC emacs-lisp
-  (use-package ggtags
-    :ensure t
-    :config 
-    (add-hook 'c-mode-common-hook
-              (lambda ()
-                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                  (ggtags-mode 1))))
-    )
+#+BEGIN_SRC emacs-lispq
+    (use-package ggtags
+      :ensure t
+      :config 
+      (add-hook 'c-mode-common-hook
+                (lambda ()
+                  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                    (ggtags-mode 1))))
+      )
 
-  (setq
-   c-default-style "linux" 
-   c-basic-offset 2)
+    (setq
+     c-default-style "linux" 
+     c-basic-offset 2)
+
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 #+END_SRC
 * smartparens
 #+BEGIN_SRC emacs-lisp 
