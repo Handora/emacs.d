@@ -751,6 +751,7 @@ https://github.com/handora/emacs.d
      c-basic-offset 2)
 
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
 #+END_SRC
 * smartparens
 #+BEGIN_SRC emacs-lisp 
@@ -1296,6 +1297,15 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
     )
 
   (setq counsel-fzf-cmd "/home/handora/.fzf/bin/fzf -f %s")
+#+END_SRC
+* PDF
+#+BEGIN_SRC emacs-lisp
+  (use-package pdf-tools
+    :ensure t)
+  (use-package org-pdfview
+    :ensure t)
+  (require 'pdf-tools)
+  (require 'org-pdfview)
 #+END_SRC
 * latex
 #+BEGIN_SRC emacs-lisp
