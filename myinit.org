@@ -802,6 +802,12 @@ https://github.com/handora/emacs.d
       (define-key c++-mode-map (kbd "M-.") 'ciao-goto-symbol)
       (define-key c++-mode-map (kbd "M-,") 'pop-tag-mark)))
 
+  (use-package company-irony-c-headers
+    :ensure t
+    :config
+    (eval-after-load 'company
+      '(add-to-list
+        'company-backends '(company-irony-c-headers company-irony))))
 #+END_SRC
 * smartparens
 #+BEGIN_SRC emacs-lisp 
