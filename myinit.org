@@ -808,6 +808,21 @@ https://github.com/handora/emacs.d
     (eval-after-load 'company
       '(add-to-list
         'company-backends '(company-irony-c-headers company-irony))))
+
+  (use-package cmake-ide
+    :ensure t
+    :defer t
+    :init (progn
+            (add-hook 'c++-mode-hook (lambda () (cmake-ide-setup)))
+            (add-hook 'c-mode-hook (lambda () (cmake-ide-setup)))
+            ))
+
+  (use-package cmake-mode
+    :ensure t
+    :mode (
+           ("CMakeLists\\.txt\\'" . cmake-mode)
+           ("\\.cmake\\'" . cmake-mode)
+           ))
 #+END_SRC
 * smartparens
 #+BEGIN_SRC emacs-lisp 
