@@ -21,7 +21,7 @@
  '(company-quickhelp-color-foreground "#DCDCCC")
  '(custom-safe-themes
    (quote
-    ("599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
+    ("0e6e456b15dbeb6e7bcad4131f029e027cceecc3cf1598fc49141343860bfce6" "599f1561d84229e02807c952919cd9b0fbaa97ace123851df84806b067666332" default)))
  '(elfeed-feeds
    (quote
     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCxkMDXQ5qzYOgXPRnOBrp1w")))
@@ -38,7 +38,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (diminish cmake-mode cmake-ide company-irony-c-headers company-c-headers rtags irony-eldoc flycheck-irony company-irony irony org-pdfview pdf-tools mode-icons smart-mode-line alect-themes moe-theme base16-theme zerodark-theme spaceline go-guru wgrep pcre2el dired+ simple-mpc git-timemachine git-gutter atomic-chrome elfeed-org elfeed-goodies elfeed go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent)))
+    (ensime scala-mode diminish cmake-mode cmake-ide company-irony-c-headers company-c-headers rtags irony-eldoc flycheck-irony company-irony irony org-pdfview pdf-tools mode-icons smart-mode-line alect-themes moe-theme base16-theme zerodark-theme spaceline go-guru wgrep pcre2el dired+ simple-mpc git-timemachine git-gutter atomic-chrome elfeed-org elfeed-goodies elfeed go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(spaceline-info-mode t)
  '(vc-annotate-background "#2B2B2B")

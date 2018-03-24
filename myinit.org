@@ -386,9 +386,8 @@ https://github.com/handora/emacs.d
   #+BEGIN_SRC emacs-lisp
     (use-package color-theme
       :ensure t)
-    ;; (use-package zenburn-theme
-    ;;   :ensure t
-    ;;   :config (load-theme 'zenburn t))
+    (use-package zenburn-theme
+      :ensure t)
 
     ;; (use-package smart-mode-line
     ;;   :ensure t
@@ -400,6 +399,7 @@ https://github.com/handora/emacs.d
     (use-package all-the-icons)
     (load-theme 'zerodark t)
     (zerodark-setup-modeline-format)
+    (load-theme 'zenburn t)
   #+END_SRC 
 
 * Reveal.js
@@ -1054,20 +1054,34 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
       (setq git-gutter:deleted-sign " -")
       (setq git-gutter:window-width 3))
 
-    (use-package git-timemachine
+  (defun qc/git-gutter-recover()
+    (interactive)
+    (set-face-background 'git-gutter:modified "#b58900")
+    (set-face-background 'git-gutter:added "#859900")
+    (set-face-background 'git-gutter:deleted "#dc322f")
+
+    (set-face-foreground 'git-gutter:modified "none")
+    (set-face-foreground 'git-gutter:added "none")
+    (set-face-foreground 'git-gutter:deleted "none")
+    (setq git-gutter:modified-sign " ~")
+    (setq git-gutter:added-sign " +")
+    (setq git-gutter:deleted-sign " -")
+    (setq git-gutter:window-width 3))
+
+  (use-package git-timemachine
       :ensure t
       )
 
     (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
                                           :hint nil)
       "
-    Git gutter:
-      _j_: next hunk        _s_tage hunk     _q_uit
-      _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
-      ^ ^                   _p_opup hunk
-      _h_: first hunk
-      _l_: last hunk        set start _R_evision
-    "
+      Git gutter:
+        _j_: next hunk        _s_tage hunk     _q_uit
+        _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
+        ^ ^                   _p_opup hunk
+        _h_: first hunk
+        _l_: last hunk        set start _R_evision
+      "
       ("j" git-gutter:next-hunk)
       ("k" git-gutter:previous-hunk)
       ("h" (progn (goto-char (point-min))
@@ -1086,7 +1100,7 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
                   (git-gutter:clear))
        :color blue))
 
-  (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
+    (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
 #+END_SRC
 * Code Folding
 #+BEGIN_SRC emacs-lisp
@@ -1402,4 +1416,12 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
   (add-hook 'LaTeX-mode-hook 'flyspell-buffer)
+#+END_SRC
+* Scala
+#+BEGIN_SRC emacs-lisp
+  (use-package ensime
+    :ensure t)
+
+  (use-package scala-mode
+    :ensure t)
 #+END_SRC
