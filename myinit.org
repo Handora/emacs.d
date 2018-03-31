@@ -1425,3 +1425,15 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
   (use-package scala-mode
     :ensure t)
 #+END_SRC
+* Protobuf
+#+BEGIN_SRC emacs-lisp
+  (defconst my-protobuf-style
+    '((c-basic-offset . 2)
+      (indent-tabs-mode . nil)))
+
+  (use-package protobuf-mode
+    :ensure t
+    :config
+    (add-hook 'protobuf-mode-hook
+              (lambda () (c-add-style "my-style" my-protobuf-style t))))
+#+END_SRC
