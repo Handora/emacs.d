@@ -1437,3 +1437,8 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
     (add-hook 'protobuf-mode-hook
               (lambda () (c-add-style "my-style" my-protobuf-style t))))
 #+END_SRC
+* flex&bison
+#+BEGIN_SRC emacs-lisp
+  (use-package bison-mode
+    :ensure t)
+#+END_SRC
