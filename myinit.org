@@ -412,6 +412,10 @@ https://github.com/handora/emacs.d
 
     (use-package htmlize
     :ensure t)
+
+    (load-file "emacs-htmlize/htmlize.el")
+
+    (require 'htmlize)
   #+END_SRC
 
 * Flycheck
