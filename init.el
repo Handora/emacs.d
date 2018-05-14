@@ -1,7 +1,7 @@
 (require 'package)
-;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-;;                          ("melpa" . "http://elpa.emacs-china.org/melpa/")
-;; 			 ("org" . "http://elpa.emacs-china.org/org/")))
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			 ("melpa" . "http://elpa.emacs-china.org/melpa/")
+ 			 ("org" . "http://elpa.emacs-china.org/org/")))
 
 (package-initialize)
 
@@ -38,7 +38,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (htmlizeq htmlize ox-reveal bison-mode protobuf-mode ensime scala-mode diminish cmake-mode cmake-ide company-irony-c-headers company-c-headers rtags irony-eldoc flycheck-irony company-irony irony org-pdfview pdf-tools mode-icons smart-mode-line alect-themes moe-theme base16-theme zerodark-theme spaceline go-guru wgrep pcre2el dired+ simple-mpc git-timemachine git-gutter atomic-chrome elfeed-org elfeed-goodies elfeed go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent)))
+    (tuareg ox-hugo jdee sml-mode htmlizeq htmlize ox-reveal bison-mode protobuf-mode ensime scala-mode diminish cmake-mode cmake-ide company-irony-c-headers company-c-headers rtags irony-eldoc flycheck-irony company-irony irony org-pdfview pdf-tools mode-icons smart-mode-line alect-themes moe-theme base16-theme zerodark-theme spaceline go-guru wgrep pcre2el dired+ simple-mpc git-timemachine git-gutter atomic-chrome elfeed-org elfeed-goodies elfeed go-playground zenburn-theme yasnippet-snippets which-key web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile smartparens rainbow-delimiters org-gcal org-bullets nyan-mode noflet markdown-mode magit-gitflow jedi ivy-hydra iedit hungry-delete go-errcheck go-eldoc ggtags flycheck-gometalinter expand-region emmet-mode elpy dumb-jump counsel-projectile company-jedi company-go color-theme calfw-org calfw-ical calfw-gcal calfw bm better-shell beacon aggressive-indent)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(spaceline-info-mode t)
  '(vc-annotate-background "#2B2B2B")
