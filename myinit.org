@@ -1480,4 +1480,16 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
     (add-to-list 'company-backends 'merlin-company-backend))
     ; Enable company on merlin managed buffers
   (add-hook 'merlin-mode-hook 'company-mode)
+
+  (use-package flycheck-ocaml
+    :ensure t)
+
+  (with-eval-after-load 'merlin
+    ;; Disable Merlin's own error checking
+    (setq merlin-error-after-save nil)
+
+    ;; Enable Flycheck checker
+    (flycheck-ocaml-setup))
+
+  (add-hook 'tuareg-mode-hook #'merlin-mode)
 #+END_SRC
