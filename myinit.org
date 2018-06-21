@@ -1434,6 +1434,9 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 
   (use-package scala-mode
     :ensure t)
+
+  (use-package sbt-mode
+    :ensure t)
 #+END_SRC
 * Protobuf
 #+BEGIN_SRC emacs-lisp
