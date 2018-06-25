@@ -23,7 +23,7 @@ https://github.com/handora/emacs.d
   (global-set-key (kbd "<f5>") 'revert-buffer)
   (setq org-src-fontify-natively t)
   (setq ring-bell-function 'ignore)
-  (set-face-attribute 'default nil :height 170)
+  (set-face-attribute 'default nil :height 180)
 
   ;; (use-package nyan-mode
   ;;   :ensure t
@@ -381,7 +381,7 @@ https://github.com/handora/emacs.d
 
         (setq company-idle-delay t)
   #+END_SRC
-
+  
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp
     (use-package color-theme
@@ -396,7 +396,8 @@ https://github.com/handora/emacs.d
 
     (use-package zerodark-theme
       :ensure t)
-    (use-package all-the-icons)
+    (use-package all-the-icons
+      :ensure t)
     (load-theme 'zerodark t)
     (zerodark-setup-modeline-format)
     (load-theme 'zenburn t)
@@ -410,12 +411,12 @@ https://github.com/handora/emacs.d
     (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
     (setq org-reveal-mathjax t)
 
-    ;; (use-package htmlize
-    ;; :ensure t)
+    (use-package htmlize
+    :ensure t)
 
-    (load-file ".emacs.d/emacs-htmlize/htmlize.el")
+    ;; (load-file ".emacs.d/emacs-htmlize/htmlize.el")
 
-    (require 'htmlize)
+    ;; (require 'htmlize)
   #+END_SRC
 
 * Flycheck
@@ -1173,21 +1174,21 @@ Mousewheel scrolling can be quite annoying, lets fix it to scroll smoothly.
 #+END_SRC
 * Go
 #+BEGIN_SRC emacs-lisp
-  (require 'th-golang)
+  ;; (require 'th-golang)
 
-  (defun my-go-setup ()
-    (setq tab-width 2)
-    (go-guru-hl-identifier-mode))
+  ;; (defun my-go-setup ()
+  ;;   (setq tab-width 2)
+  ;;   (go-guru-hl-identifier-mode))
 
-  (add-hook 'go-mode-hook 'my-go-setup)
+  ;; (add-hook 'go-mode-hook 'my-go-setup)
 
-  (add-to-list 'yas-snippet-dirs "/home/handora/.emacs.d/yasnippet-go")
+  ;; (add-to-list 'yas-snippet-dirs "/home/handora/.emacs.d/yasnippet-go")
 
-  (use-package go-playground
-    :ensure t)
+  ;; (use-package go-playground
+  ;;   :ensure t)
 
-  (use-package go-guru
-    :ensure t)
+  ;; (use-package go-guru
+  ;;   :ensure t)
 
 #+END_SRC
 * Elfeed
