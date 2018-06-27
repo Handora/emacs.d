@@ -472,7 +472,7 @@ https://github.com/handora/emacs.d
       :init
       (global-undo-tree-mode))
   #+END_SRC
-* COMMENT Misc packages
+* Misc packages
   #+BEGIN_SRC emacs-lisp
 
     ; Highlights the current cursor line
@@ -504,10 +504,10 @@ https://github.com/handora/emacs.d
       :config
       (global-aggressive-indent-mode 1))
 
-    (use-package autopair
-      :ensure t
-      :config
-      (autopair-global-mode))
+    ;; (use-package autopair
+    ;;   :ensure t
+    ;;   :config
+    ;;   (autopair-global-mode))
 
     (setq save-interprogram-paste-before-kill t)
   #+END_SRC
