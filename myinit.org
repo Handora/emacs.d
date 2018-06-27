@@ -472,40 +472,44 @@ https://github.com/handora/emacs.d
       :init
       (global-undo-tree-mode))
   #+END_SRC
-* Misc packages
+* COMMENT Misc packages
   #+BEGIN_SRC emacs-lisp
 
-  ; Highlights the current cursor line
-  (global-hl-line-mode t)
+    ; Highlights the current cursor line
+    (global-hl-line-mode t)
 
-  ; flashes the cursor's line when you scroll
-  (use-package beacon
-    :ensure t
-    :config
-    (beacon-mode 1)
-    ; (setq beacon-color "#666600")
-    )
+    ; flashes the cursor's line when you scroll
+    (use-package beacon
+      :ensure t
+      :config
+      (beacon-mode 1)
+      ; (setq beacon-color "#666600")
+      )
 
-  ; deletes all the whitespace when you hit backspace or delete
-  (use-package hungry-delete
-    :ensure t
-    :config
-    (global-hungry-delete-mode))
+    ; deletes all the whitespace when you hit backspace or delete
+    (use-package hungry-delete
+      :ensure t
+      :config
+      (global-hungry-delete-mode))
 
-  ; expand the marked region in semantic increments (negative prefix to reduce region)
-  (use-package expand-region
-    :ensure t
-    :config 
-    (global-set-key (kbd "C-=") 'er/expand-region)) 
+    ; expand the marked region in semantic increments (negative prefix to reduce region)
+    (use-package expand-region
+      :ensure t
+      :config 
+      (global-set-key (kbd "C-=") 'er/expand-region)) 
 
-  ; aggresive-indent
-  (use-package aggressive-indent
-    :ensure t
-    :config
-    (global-aggressive-indent-mode 1))
-  
+    ; aggresive-indent
+    (use-package aggressive-indent
+      :ensure t
+      :config
+      (global-aggressive-indent-mode 1))
 
-  (setq save-interprogram-paste-before-kill t)
+    (use-package autopair
+      :ensure t
+      :config
+      (autopair-global-mode))
+
+    (setq save-interprogram-paste-before-kill t)
   #+END_SRC
 
 * iedit and narrow / widen dwim
